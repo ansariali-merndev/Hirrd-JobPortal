@@ -12,7 +12,7 @@ export default function Header() {
           <Image src={image.logo} alt="" height={40} />
         </Link>
         <SignedOut>
-          <SignInButton />
+          <SignInButton mode="modal" />
         </SignedOut>
         <SignedIn>
           <UserButton />

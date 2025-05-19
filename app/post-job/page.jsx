@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckAuth } from "@/components/components_/checkAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -38,6 +39,7 @@ export default function PostJob() {
 
   return (
     <section>
+      <CheckAuth />
       <div className="my-8">
         <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold bg-gradient-to-br from-purple-600 via-orange-600 text-transparent bg-clip-text text-center my-6">
           Post a Job
