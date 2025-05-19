@@ -21,7 +21,7 @@ export const LandingPage = () => {
           <span className="flex items-center gap-3">
             {" "}
             and get
-            <Image src={image.logo} alt="" width={150} />
+            <Image src={image.logo} alt="" width={120} />
           </span>
         </h1>
         <p className="text-gray-300 text-xs sm:mt-4 sm:text-xl">

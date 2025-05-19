@@ -14,7 +14,7 @@ export const CheckAuth = () => {
       Swal.fire({
         icon: "warning",
         title: "Access Denied",
-        text: "You must be logged in to post or Find a job. Please log in to continue.",
+        text: "You must be logged in to post a job. Please log in to continue.",
         confirmButtonText: "Please Login",
       }).then(() => {
         router.push("/");

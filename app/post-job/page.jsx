@@ -12,10 +12,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import { postJob } from "@/api/axios";
+import Swal from "sweetalert2";
 
 export default function PostJob() {
+  const { user, isLoaded } = useUser();
+
   const initialValue = {
+    recruiterEmail: "",
+    recruiterClerkId: "",
     title: "",
     description: "",
     city: "",
@@ -24,6 +31,19 @@ export default function PostJob() {
   };
   const [inputValue, setInputValue] = useState(initialValue);
 
+  useEffect(() => {
+    if (isLoaded && user) {
+      const email = user?.emailAddresses?.[0]?.emailAddress || "";
+      const id = user?.id || "";
+
+      setInputValue((prev) => ({
+        ...prev,
+        recruiterEmail: email,
+        recruiterClerkId: id,
+      }));
+    }
+  }, [isLoaded, user]);
+
   const handleInputValue = (e) => {
     const { name, value } = e.target;
     setInputValue((prev) => {
@@ -31,9 +51,16 @@ export default function PostJob() {
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    const response = await postJob(inputValue);
+    if (response.message === "success") {
+      Swal.fire({
+        icon: "success",
+        title: "Job Posted Successfully",
+        timer: 1000,
+      });
+    }
     setInputValue(initialValue);
   };
 
@@ -109,7 +136,7 @@ export default function PostJob() {
           <Textarea
             placeholder="Skills Required and Responsibility"
             rows={6}
-            className={"h-50"}
+            className={"h-90"}
             value={inputValue.skills}
             onChange={handleInputValue}
             name="skills"
