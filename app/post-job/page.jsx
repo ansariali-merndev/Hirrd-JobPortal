@@ -33,7 +33,7 @@ export default function PostJob() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(initialValue);
+    console.log(inputValue);
     setInputValue(initialValue);
   };
 
