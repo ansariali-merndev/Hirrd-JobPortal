@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
 import { image } from "@/assets/companies";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -11,7 +11,12 @@ export default function Header() {
         <Link href="/">
           <Image src={image.logo} alt="" height={40} />
         </Link>
-        <Button variant="outline">Login</Button>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </nav>
     </header>
   );
