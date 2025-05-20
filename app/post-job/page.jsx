@@ -20,7 +20,7 @@ import Swal from "sweetalert2";
 export default function PostJob() {
   const { user, isLoaded } = useUser();
 
-  const initialValue = {
+  const [inputValue, setInputValue] = useState({
     recruiterEmail: "",
     recruiterClerkId: "",
     title: "",
@@ -28,8 +28,7 @@ export default function PostJob() {
     city: "",
     company: "",
     skills: "",
-  };
-  const [inputValue, setInputValue] = useState(initialValue);
+  });
 
   useEffect(() => {
     if (isLoaded && user) {
@@ -61,7 +60,15 @@ export default function PostJob() {
         timer: 1000,
       });
     }
-    setInputValue(initialValue);
+    setInputValue((prev) => ({
+      recruiterEmail: prev.recruiterEmail,
+      recruiterClerkId: prev.recruiterClerkId,
+      title: "",
+      description: "",
+      city: "",
+      company: "",
+      skills: "",
+    }));
   };
 
   return (
