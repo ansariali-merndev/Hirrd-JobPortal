@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { postJob } from "@/api/axios";
 import Swal from "sweetalert2";
+import { Title } from "@/components/components_/Title";
 
 export default function PostJob() {
   const { user, isLoaded } = useUser();
@@ -75,9 +76,7 @@ export default function PostJob() {
     <section>
       <CheckAuth />
       <div className="my-8">
-        <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold bg-gradient-to-br from-purple-600 via-orange-600 text-transparent bg-clip-text text-center my-6">
-          Post a Job
-        </h1>
+        <Title title={"Post Job"} />
         <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
           <Input
             type={"text"}

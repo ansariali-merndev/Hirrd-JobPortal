@@ -23,14 +23,14 @@ export default function Header() {
           <UserButton>
             <UserButton.MenuItems>
               <UserButton.Link
-                label="Saved Jobs"
-                href="/saved-job"
-                labelIcon={<Bookmark size={18} />}
-              />
-              <UserButton.Link
                 label="My Jobs"
                 href="/my-jobs"
                 labelIcon={<Briefcase size={18} />}
+              />
+              <UserButton.Link
+                label="Saved Jobs"
+                href="/saved-job"
+                labelIcon={<Bookmark size={18} />}
               />
             </UserButton.MenuItems>
           </UserButton>

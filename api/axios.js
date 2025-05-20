@@ -17,3 +17,13 @@ export const postJob = async (data) => {
     throw error;
   }
 };
+
+export const getJobByEmail = async (email) => {
+  try {
+    const res = await instance.post("/get-job", email);
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
