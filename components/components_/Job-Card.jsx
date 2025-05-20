@@ -42,7 +42,7 @@ export const JobCard = ({ emailId }) => {
         <CardContent>
           <div className="flex justify-between text-gray-300 capitalize text-[13px]">
             <span>{job.city}</span>
-            <span>2 Applicant</span>
+            <span>{job.applicants} Applicant</span>
             <span>Amazon</span>
           </div>
         </CardContent>
@@ -52,6 +52,12 @@ export const JobCard = ({ emailId }) => {
       </Card>
     ));
   } else {
-    return null;
+    return (
+      <div>
+        <h2 className="text-4xl my-8 font-bold text-gray-300 capitalize">
+          No Posted Job
+        </h2>
+      </div>
+    );
   }
 };

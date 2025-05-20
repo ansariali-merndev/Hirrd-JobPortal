@@ -16,6 +16,8 @@ export const CheckAuth = () => {
         title: "Access Denied",
         text: "You must be logged in to post a job. Please log in to continue.",
         confirmButtonText: "Please Login",
+        background: "black",
+        color: "#fff",
       }).then(() => {
         router.push("/");
       });

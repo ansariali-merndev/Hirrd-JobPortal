@@ -7,7 +7,11 @@ export const Hiring = () => {
   const [isHiring, setIsHiring] = useState(true);
   return (
     <>
-      <Button variant={"secondary"} className={"cursor-pointer"}>
+      <Button
+        variant={"secondary"}
+        className={"cursor-pointer"}
+        onClick={() => setIsHiring((prev) => !prev)}
+      >
         {isHiring ? "Currently Hiring" : "Not Hiring"}
       </Button>
     </>

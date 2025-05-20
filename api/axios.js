@@ -27,3 +27,31 @@ export const getJobByEmail = async (email) => {
     throw error;
   }
 };
+
+export const getAllJob = async () => {
+  try {
+    const res = await instance.get("/getalljob");
+    return res.data;
+  } catch (error) {
+    console.log("Error: ", error.message);
+    throw error;
+  }
+};
+
+export const getJobId = async (id) => {
+  try {
+    const res = await instance.post("/getjobid", { id });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const incrementApplicant = async (id) => {
+  try {
+    const res = await instance.post("/update-applicants", { id });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
