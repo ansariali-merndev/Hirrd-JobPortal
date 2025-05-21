@@ -20,7 +20,6 @@ export const JobCard = ({ emailId }) => {
       async function fetchJobs() {
         try {
           const res = await getJobByEmail({ email: emailId });
-          console.log(res);
           if (res.message === "success") {
             setAllJob(res.job);
           }

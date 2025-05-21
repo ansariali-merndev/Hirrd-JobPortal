@@ -13,9 +13,11 @@ import {
 import { Button } from "../ui/button";
 import { BarLoader } from "react-spinners";
 import Link from "next/link";
+import { Heart } from "lucide-react";
 
 export const LatestJob = () => {
   const [allJob, setAllJob] = useState([]);
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     async function getJob() {
@@ -45,12 +47,18 @@ export const LatestJob = () => {
                     <span>{job.company}</span>
                   </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex items-center gap-3">
                   <Link href={`/jobs/${job._id}`}>
                     <Button variant={"outline"} className={"cursor-pointer"}>
                       View More Detail
                     </Button>
                   </Link>
+                  <Heart
+                    onClick={() => setIsFav((prev) => !prev)}
+                    className={`${
+                      isFav ? "fill-red-600 text-red-600" : ""
+                    } w-6`}
+                  />
                 </CardFooter>
               </Card>
             </div>
